@@ -9,16 +9,19 @@ const Footer = () => (
           <h3 className="font-heading text-xl mb-4">Haven Breeze Villas</h3>
           <p className="text-sm text-primary-foreground/70 leading-relaxed">
             Your peaceful stopover near Lake Nakuru, along the route to Maasai Mara.
-            Cozy 2-bedroom villas with modern amenities.
+            Short & long term stay. Catered & self-catering.
           </p>
         </div>
         <div>
           <h4 className="font-heading text-lg mb-4">Explore</h4>
           <div className="flex flex-col gap-2 text-sm text-primary-foreground/70">
             <Link to="/" className="hover:text-primary-foreground transition-colors">Home</Link>
-            <Link to="/accommodations" className="hover:text-primary-foreground transition-colors">Accommodations</Link>
+            <Link to="/accommodations" className="hover:text-primary-foreground transition-colors">The Camp</Link>
             <Link to="/activities" className="hover:text-primary-foreground transition-colors">Activities</Link>
+            <Link to="/restaurant" className="hover:text-primary-foreground transition-colors">Restaurant</Link>
             <Link to="/gallery" className="hover:text-primary-foreground transition-colors">Gallery</Link>
+            <Link to="/weekend-getaway" className="hover:text-primary-foreground transition-colors">Weekend Getaway</Link>
+            <Link to="/bush-wedding" className="hover:text-primary-foreground transition-colors">Bush Wedding</Link>
             <Link to="/booking" className="hover:text-primary-foreground transition-colors">Book Now</Link>
           </div>
         </div>
@@ -28,7 +31,7 @@ const Footer = () => (
             <a href="tel:+254700000000" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
               <Phone size={14} /> +254 700 000 000
             </a>
-            <a href="mailto:info@havenbreezvillas.com" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
+            <a href="mailto:info@havenbreezevillas.com" className="flex items-center gap-2 hover:text-primary-foreground transition-colors">
               <Mail size={14} /> info@havenbreezevillas.com
             </a>
             <div className="flex items-start gap-2">
