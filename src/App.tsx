@@ -6,7 +6,10 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index";
 import Accommodations from "./pages/Accommodations";
 import Activities from "./pages/Activities";
+import Restaurant from "./pages/Restaurant";
 import GalleryPage from "./pages/GalleryPage";
+import WeekendGetaway from "./pages/WeekendGetaway";
+import BushWedding from "./pages/BushWedding";
 import Booking from "./pages/Booking";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
@@ -24,7 +27,10 @@ const App = () => (
           <Route path="/accommodations" element={<Accommodations />} />
           <Route path="/accommodations/:slug" element={<Accommodations />} />
           <Route path="/activities" element={<Activities />} />
+          <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/weekend-getaway" element={<WeekendGetaway />} />
+          <Route path="/bush-wedding" element={<BushWedding />} />
           <Route path="/booking" element={<Booking />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

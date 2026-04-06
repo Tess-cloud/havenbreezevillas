@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Star, Wifi, Car, Shield, MapPin, ChevronDown, Utensils, Trees } from "lucide-react";
+import { Star, Wifi, Car, Shield, MapPin, ChevronDown, Utensils, Trees, Droplets, Flame } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import { rooms, testimonials } from "@/lib/data";
@@ -10,6 +10,8 @@ import roomMaster from "@/assets/room-master.jpg";
 import roomTwin from "@/assets/room-twin.jpg";
 import lakeNakuru from "@/assets/lake-nakuru.jpg";
 import diningArea from "@/assets/dining-area.jpg";
+import signboard from "@/assets/signboard.png";
+import safariDrive from "@/assets/safari-drive.jpg";
 
 const roomImages: Record<string, string> = {
   "room-master": roomMaster,
@@ -19,10 +21,12 @@ const roomImages: Record<string, string> = {
 
 const amenities = [
   { icon: Wifi, label: "Free Wi-Fi" },
-  { icon: Car, label: "Free Parking" },
+  { icon: Car, label: "Secure Parking" },
   { icon: Shield, label: "24/7 Security" },
-  { icon: Utensils, label: "Kitchen" },
+  { icon: Utensils, label: "Full Kitchen" },
   { icon: Trees, label: "Garden" },
+  { icon: Droplets, label: "Hot Showers" },
+  { icon: Flame, label: "BBQ Area" },
   { icon: MapPin, label: "Near Lake Nakuru" },
 ];
 
@@ -41,13 +45,13 @@ const Index = () => (
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/booking">
-            <Button size="lg" className="bg-primary hover:bg-safari-olive-light text-primary-foreground px-8">
+            <Button size="lg" className="bg-safari-gold hover:bg-safari-warm text-primary-foreground px-8 text-base">
               Reserve Now
             </Button>
           </Link>
           <Link to="/accommodations">
-            <Button size="lg" variant="outline" className="border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 px-8">
-              View Rooms
+            <Button size="lg" variant="outline" className="border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 px-8 text-base">
+              Explore The Camp
             </Button>
           </Link>
         </div>
@@ -57,23 +61,34 @@ const Index = () => (
       </div>
     </section>
 
-    {/* About */}
+    {/* About / Welcome */}
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="animate-fade-in">
             <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">
-              An Eco-Friendly Getaway Near Lake Nakuru
+              Welcome to Haven Breeze Villas
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              Haven Breeze Villas offers cozy, self-contained 2-bedroom villas nestled in a serene location near Lake Nakuru National Park. Whether you're on a safari adventure, a family holiday, or a business trip, our villas provide the perfect blend of comfort and nature.
+              Perfectly located near Lake Nakuru National Park and along the route to Maasai Mara, our cozy 2-bedroom villas offer comfort, privacy, and convenience for travelers, families, and safari guests.
             </p>
+            <div className="mb-4">
+              <p className="text-muted-foreground leading-relaxed mb-2">Each villa features:</p>
+              <ul className="space-y-1.5 text-muted-foreground text-sm">
+                <li className="flex items-center gap-2"><span className="text-primary">•</span> Two spacious bedrooms</li>
+                <li className="flex items-center gap-2"><span className="text-primary">•</span> A comfortable living area</li>
+                <li className="flex items-center gap-2"><span className="text-primary">•</span> Fully equipped kitchen</li>
+                <li className="flex items-center gap-2"><span className="text-primary">•</span> Hot showers and reliable water supply</li>
+                <li className="flex items-center gap-2"><span className="text-primary">•</span> Free Wi-Fi</li>
+                <li className="flex items-center gap-2"><span className="text-primary">•</span> Secure parking</li>
+              </ul>
+            </div>
             <p className="text-muted-foreground leading-relaxed mb-8">
-              Positioned along the route to Maasai Mara, we're your ideal stopover — offering secure parking, fast Wi-Fi, hot showers, and warm Kenyan hospitality.
+              Whether you're exploring Lake Nakuru, heading to Maasai Mara, or simply looking for a quiet getaway, Haven Breeze Villas provides a relaxing and secure environment to unwind.
             </p>
             <div className="flex gap-4">
               <Link to="/accommodations">
-                <Button className="bg-primary hover:bg-safari-olive-light text-primary-foreground">Learn More</Button>
+                <Button className="bg-primary hover:bg-safari-olive-light text-primary-foreground">Explore The Camp</Button>
               </Link>
               <Link to="/contact">
                 <Button variant="outline" className="border-primary hover:bg-primary/5 text-foreground">Contact Us</Button>
@@ -81,43 +96,43 @@ const Index = () => (
             </div>
           </div>
           <div className="rounded-lg overflow-hidden shadow-xl">
-            <img src={villaExterior} alt="Haven Breeze Villa exterior" className="w-full h-[400px] object-cover" loading="lazy" width={1920} height={1080} />
+            <img src={signboard} alt="Haven Breeze Villas signboard" className="w-full h-[400px] object-cover" loading="lazy" />
           </div>
         </div>
       </div>
     </section>
 
-    {/* Accommodations preview */}
+    {/* Accommodations — alternating layout */}
     <section className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         <h2 className="font-heading text-3xl md:text-4xl text-center text-foreground mb-4">Our Accommodations</h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
           Choose from our carefully designed rooms and villas, each offering a unique safari lodge experience.
         </p>
-        <div className="grid md:grid-cols-3 gap-8">
-          {rooms.map((room) => (
-            <Link key={room.id} to={`/accommodations/${room.slug}`} className="group">
-              <div className="bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
-                <div className="overflow-hidden h-56">
-                  <img
-                    src={roomImages[room.image]}
-                    alt={room.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="font-heading text-xl mb-2 text-foreground">{room.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{room.description}</p>
-                  <div className="flex justify-between items-center">
-                    <span className="text-primary font-semibold">KES {room.price.toLocaleString()}/night</span>
-                    <span className="text-xs text-muted-foreground">Up to {room.capacity} guests</span>
-                  </div>
-                </div>
+        {rooms.map((room, i) => (
+          <div key={room.id} className={`flex flex-col lg:flex-row gap-10 mb-16 last:mb-0 ${i % 2 === 1 ? "lg:flex-row-reverse" : ""}`}>
+            <div className="lg:w-1/2 rounded-lg overflow-hidden shadow-xl">
+              <img src={roomImages[room.image]} alt={room.name} className="w-full h-[360px] object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div className="lg:w-1/2 flex flex-col justify-center">
+              <h3 className="font-heading text-2xl text-foreground mb-3">{room.name}</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">{room.longDescription}</p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {room.features.slice(0, 5).map((f) => (
+                  <span key={f} className="flex items-center gap-1 text-xs bg-background px-3 py-1.5 rounded-full text-foreground">
+                    <Star size={10} className="text-safari-gold" /> {f}
+                  </span>
+                ))}
               </div>
-            </Link>
-          ))}
-        </div>
+              <div className="flex items-center gap-6">
+                <span className="text-xl font-heading text-foreground">KES {room.price.toLocaleString()}<span className="text-sm text-muted-foreground font-body">/night</span></span>
+                <Link to={`/booking?room=${room.id}`}>
+                  <Button className="bg-primary hover:bg-safari-olive-light text-primary-foreground">Book Now</Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
 
@@ -125,7 +140,7 @@ const Index = () => (
     <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="font-heading text-3xl md:text-4xl text-center text-foreground mb-12">Amenities & Services</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {amenities.map((a) => (
             <div key={a.label} className="flex flex-col items-center gap-3 p-6 bg-secondary rounded-lg hover:shadow-md transition-shadow">
               <a.icon size={28} className="text-primary" />
@@ -136,8 +151,28 @@ const Index = () => (
       </div>
     </section>
 
-    {/* Gallery preview */}
+    {/* Activities highlight */}
     <section className="py-20 bg-secondary">
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="rounded-lg overflow-hidden shadow-xl">
+            <img src={safariDrive} alt="Safari game drive" className="w-full h-[400px] object-cover" loading="lazy" />
+          </div>
+          <div>
+            <h2 className="font-heading text-3xl md:text-4xl text-foreground mb-6">Safari & Activities</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              We can assist with local tours and park visits, safari game drives to Lake Nakuru and Maasai Mara, bird watching excursions, cultural community visits, and airport/town transfers.
+            </p>
+            <Link to="/activities">
+              <Button className="bg-primary hover:bg-safari-olive-light text-primary-foreground">View Activities</Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Gallery preview */}
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="font-heading text-3xl md:text-4xl text-center text-foreground mb-12">Gallery</h2>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
@@ -156,7 +191,7 @@ const Index = () => (
     </section>
 
     {/* Testimonials */}
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         <h2 className="font-heading text-3xl md:text-4xl text-center text-foreground mb-12">Guest Reviews</h2>
         <div className="grid md:grid-cols-3 gap-8">
@@ -188,7 +223,7 @@ const Index = () => (
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to="/booking">
-            <Button size="lg" className="bg-primary hover:bg-safari-olive-light text-primary-foreground px-8">Reserve Now</Button>
+            <Button size="lg" className="bg-safari-gold hover:bg-safari-warm text-primary-foreground px-8">Reserve Now</Button>
           </Link>
           <a href="https://wa.me/254700000000" target="_blank" rel="noopener noreferrer">
             <Button size="lg" variant="outline" className="border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/10 px-8">
